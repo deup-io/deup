@@ -1,44 +1,11 @@
 /**
- * Customize axios get/post methods
+ * Alist plugin for Deup
  *
- * @class Request
+ * @class Alist
+ * @extends {Deup}
+ * @author ZiHang Gao
+ * @see https://alist.nn.ci
  */
-class Request {
-  /**
-   * Request get method
-   *
-   * @param url
-   * @returns {Promise<any>}
-   */
-  static async get(url) {
-    const inputs = await $storage.inputs;
-    const response = await $axios.get(`${inputs.url}${url}`, {
-      headers: {
-        Authorization: await $storage.get('token'),
-      },
-    });
-    return response.data;
-  }
-
-  /**
-   * Request post method
-   *
-   * @param url
-   * @param data
-   * @returns {Promise<any>}
-   */
-  static async post(url, data) {
-    const inputs = await $storage.inputs;
-    const response = await $axios.post(`${inputs.url}${url}`, data, {
-      headers: {
-        Authorization: await $storage.get('token'),
-      },
-    });
-
-    return response.data;
-  }
-}
-
 class Alist extends Deup {
   /**
    * Define the basic configuration of the alist plugin
@@ -274,6 +241,47 @@ class Alist extends Deup {
       related: (object.related || []).map((item) => this.formatObject(item)),
       headers,
     };
+  }
+}
+
+/**
+ * Customize axios get/post methods
+ *
+ * @class Request
+ */
+class Request {
+  /**
+   * Request get method
+   *
+   * @param url
+   * @returns {Promise<any>}
+   */
+  static async get(url) {
+    const inputs = await $storage.inputs;
+    const response = await $axios.get(`${inputs.url}${url}`, {
+      headers: {
+        Authorization: await $storage.get('token'),
+      },
+    });
+    return response.data;
+  }
+
+  /**
+   * Request post method
+   *
+   * @param url
+   * @param data
+   * @returns {Promise<any>}
+   */
+  static async post(url, data) {
+    const inputs = await $storage.inputs;
+    const response = await $axios.post(`${inputs.url}${url}`, data, {
+      headers: {
+        Authorization: await $storage.get('token'),
+      },
+    });
+
+    return response.data;
   }
 }
 
