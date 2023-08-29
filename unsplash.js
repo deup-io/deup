@@ -110,7 +110,7 @@ class Unsplash extends Deup {
       thumbnail: image.urls.thumb,
       created: image.created_at,
       modified: image.updated_at,
-      url: image.urls.raw,
+      url: image.urls.regular,
     };
   }
 }
