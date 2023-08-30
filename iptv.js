@@ -120,8 +120,12 @@ class IPTV extends Deup {
     ...{ isLive: true, type: 'video', path: '' },
   }));
 
+  // Android quickjs fixed, not available `get = (name) => []`
+  async get(name) {
+    return _.find(this._channels, (channel) => channel.name === name);
+  }
+
   check = () => true;
-  get = (name) => _.find(this._channels, (channel) => channel.name === name);
   list = (path, offset, limit) => (offset === 0 ? this._channels : []);
   search = (path, keyword, offset, limit) =>
     offset === 0
