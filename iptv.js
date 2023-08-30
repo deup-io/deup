@@ -57,7 +57,7 @@ class IPTV extends Deup {
       name: 'CCTV-5 体育',
       type: 'video',
       path: '',
-      poster: 'https://s2.loli.net/2023/08/30/Q9jdSYAGy5kFNm3.png',
+      poster: 'https://s2.loli.net/2023/08/30/I5MqfnkLduwKjaQ.png',
       url: 'https://cntv.sbs/tv?auth=230830&id=cctv5',
     },
     {
