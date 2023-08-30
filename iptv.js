@@ -145,25 +145,11 @@ class IPTV extends Deup {
       url: 'https://cntv.sbs/tv?auth=230830&id=cctv16',
     },
     {
-      name: 'CCTV-16 4K',
-      type: 'video',
-      path: '',
-      poster: 'https://s2.loli.net/2023/08/30/U2B4aXSHverE6do.png',
-      url: 'https://cntv.sbs/tv?auth=230830&id=cctv164k',
-    },
-    {
       name: 'CCTV-17 农业农村',
       type: 'video',
       path: '',
       poster: 'https://s2.loli.net/2023/08/30/UefnGBCLMJXt3hQ.png',
       url: 'https://cntv.sbs/tv?auth=230830&id=cctv17',
-    },
-    {
-      name: 'CCTV-4K 超高清',
-      type: 'video',
-      path: '',
-      poster: 'https://s2.loli.net/2023/08/30/bW23Rm7osYjnPXO.png',
-      url: 'https://cntv.sbs/tv?auth=230830&id=cctv4k',
     },
   ];
 
