@@ -20,7 +20,7 @@ class IPTV extends Deup {
    * Channel list
    *
    * @private
-   * @type {{name: string, type: string, path: string, poster: string, url: string}[]}
+   * @type {{name: string, type: string, poster: string, url: string}[]}
    * @memberof IPTV
    * @see https://github.com/fanmingming/live
    */
@@ -117,17 +117,17 @@ class IPTV extends Deup {
     },
   ].map((channel) => ({
     ...channel,
-    ...{ isLive: true, type: 'video', path: '' },
+    ...{ id: channel.name, isLive: true, type: 'video' },
   }));
 
-  // Android quickjs fixed, not available `get = (name) => []`
-  async get(name) {
-    return _.find(this._channels, (channel) => channel.name === name);
+  // Android quickjs fixed, not available `get = (id) => []`
+  async get(object) {
+    return _.find(this._channels, (channel) => channel.id === object.id);
   }
 
   check = () => true;
-  list = (path, offset, limit) => (offset === 0 ? this._channels : []);
-  search = (path, keyword, offset, limit) =>
+  list = (object, offset, limit) => (offset === 0 ? this._channels : []);
+  search = (object, keyword, offset, limit) =>
     offset === 0
       ? _.filter(this._channels, (channel) => channel.name.includes(keyword))
       : [];
