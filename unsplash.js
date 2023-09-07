@@ -43,14 +43,14 @@ class Unsplash extends Deup {
   /**
    * Get the image information of the specified id
    *
-   * @param id
-   * @returns {Promise<{path: string, thumbnail: *, created: *, name, modified: *, type: string, isDirectory: boolean, url}>}
+   * @param object
+   * @returns {Promise<{thumbnail: *, created: *, name, modified: *, type: string, isDirectory: boolean, url}>}
    */
-  async get(id) {
+  async get(object) {
     const clientId = (await $storage.inputs).clientId;
 
     const { data } = await $axios.get(
-      `https://api.unsplash.com/photos/${id}/?client_id=${clientId}`,
+      `https://api.unsplash.com/photos/${object.id}/?client_id=${clientId}`,
     );
 
     return this.formatObject(data);
@@ -59,12 +59,12 @@ class Unsplash extends Deup {
   /**
    * Get image list
    *
-   * @param path
+   * @param object
    * @param offset
    * @param limit
-   * @returns {Promise<{path: string, thumbnail: *, created: *, name: *, modified: *, type: string, isDirectory: boolean, url: *}[]>}
+   * @returns {Promise<{thumbnail: *, created: *, name: *, modified: *, type: string, isDirectory: boolean, url: *}[]>}
    */
-  async list(path = '', offset = 0, limit = 20) {
+  async list(object = null, offset = 0, limit = 20) {
     const page = Math.floor(offset / limit) + 1;
     const clientId = (await $storage.inputs).clientId;
 
@@ -78,13 +78,13 @@ class Unsplash extends Deup {
   /**
    * Search image
    *
-   * @param path
+   * @param object
    * @param keyword
    * @param offset
    * @param limit
-   * @returns {Promise<{path: string, thumbnail: *, created: *, name: *, modified: *, type: string, isDirectory: boolean, url: *}[]>}
+   * @returns {Promise<{thumbnail: *, created: *, name: *, modified: *, type: string, isDirectory: boolean, url: *}[]>}
    */
-  async search(path, keyword, offset, limit) {
+  async search(object, keyword, offset, limit) {
     const page = Math.floor(offset / limit) + 1;
     const clientId = (await $storage.inputs).clientId;
 
@@ -99,13 +99,12 @@ class Unsplash extends Deup {
    * Format image information
    *
    * @param image
-   * @returns {{path: string, thumbnail: *, created: *, name, modified: *, type: string, isDirectory: boolean, url}}
+   * @returns {{thumbnail: *, created: *, name, modified: *, type: string, isDirectory: boolean, url}}
    */
   formatObject(image) {
     return {
-      name: image.id,
+      id: image.id,
       type: 'image',
-      path: '', // path is specified as an empty string, because by default / is prepended to the path
       isDirectory: false,
       thumbnail: image.urls.thumb,
       created: image.created_at,
