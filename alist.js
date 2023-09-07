@@ -71,35 +71,36 @@ class Alist extends Deup {
   /**
    * Get information about a specific object
    *
-   * @param path eg: /path/to/file
+   * @param object
    * @returns {Promise<{thumbnail: *, size, name, modified: *, type: string, isDirectory: *, url: *}>}
    */
-  async get(path) {
+  async get(object) {
     if (!(await this.getUserInfo())) {
       $alert('Not login, please login first');
       return;
     }
 
-    const response = await Request.post('/api/fs/get', { path });
+    const response = await Request.post('/api/fs/get', { path: object.id });
     if (response.code === 200) {
-      return this.formatObject(response.data);
+      return this.formatObject({ ...response.data, ...{ id: object.id } });
     }
   }
 
   /**
    * Get object list
    *
-   * @param path eg: /path/to/directory
+   * @param object
    * @param offset
    * @param limit
    * @returns {Promise<*>}
    */
-  async list(path, offset, limit) {
+  async list(object, offset, limit) {
     if (!(await this.getUserInfo())) {
       $alert('Not login, please login first');
       return;
     }
 
+    const path = object ? (object.extra ? object.extra.path || '/' : '/') : '/';
     const { code, data } = await Request.post('/api/fs/list', {
       path,
       page: Math.floor(offset / limit) + 1,
@@ -108,7 +109,7 @@ class Alist extends Deup {
 
     if (code === 200 && data.content) {
       return _.orderBy(data.content, ['is_dir', 'name'], ['desc', 'asc']).map(
-        (object) => this.formatObject(object, path),
+        (o) => this.formatObject(o, path),
       );
     }
   }
@@ -116,18 +117,19 @@ class Alist extends Deup {
   /**
    * Search
    *
-   * @param path
+   * @param object
    * @param keyword
    * @param offset
    * @param limit
    * @returns {Promise<*>}
    */
-  async search(path, keyword, offset, limit) {
+  async search(object, keyword, offset, limit) {
     if (!(await this.getUserInfo())) {
       $alert('Not login, please login first');
       return;
     }
 
+    const path = object ? (object.extra ? object.extra.path || '/' : '/') : '/';
     const { code, data } = await Request.post('/api/fs/search', {
       parent: path,
       keywords: keyword,
@@ -137,7 +139,7 @@ class Alist extends Deup {
 
     if (code === 200 && data.content) {
       return _.orderBy(data.content, ['is_dir', 'name'], ['desc', 'asc']).map(
-        (object) => this.formatObject(object, path, true),
+        (o) => this.formatObject(o, path, true),
       );
     }
   }
@@ -224,20 +226,23 @@ class Alist extends Deup {
     // Is search
     if (search) {
       const basePath = this._userInfo.base_path;
-      if (basePath !== '/') path = object.parent.replace(basePath, '');
+      if (basePath !== '/') path = object.parent.replace(basePath, '') + '/';
     }
 
     return {
+      id: path ? `${path}${object.name}` : object.id,
       name: object.name,
       type: ['unknown', 'folder', 'video', 'audio', 'document', 'image'][
         object.type
       ],
-      path: path ? path + '/' : null,
       isDirectory: object.is_dir,
       thumbnail: object.thumb,
       modified: object.modified,
       size: object.size,
       url: object.raw_url,
+      extra: {
+        path: path ? `${path}${object.name}/` : null,
+      },
       related: (object.related || []).map((item) => this.formatObject(item)),
       headers,
     };
