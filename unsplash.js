@@ -44,7 +44,7 @@ class Unsplash extends Deup {
    * Get the image information of the specified id
    *
    * @param object
-   * @returns {Promise<{thumbnail: *, created: *, name, modified: *, type: string, isDirectory: boolean, url}>}
+   * @returns {Promise<{thumbnail: *, created: *, name, modified: *, type: string, url}>}
    */
   async get(object) {
     const clientId = (await $storage.inputs).clientId;
@@ -62,7 +62,7 @@ class Unsplash extends Deup {
    * @param object
    * @param offset
    * @param limit
-   * @returns {Promise<{thumbnail: *, created: *, name: *, modified: *, type: string, isDirectory: boolean, url: *}[]>}
+   * @returns {Promise<{thumbnail: *, created: *, name: *, modified: *, type: string, url: *}[]>}
    */
   async list(object = null, offset = 0, limit = 20) {
     const page = Math.floor(offset / limit) + 1;
@@ -82,7 +82,7 @@ class Unsplash extends Deup {
    * @param keyword
    * @param offset
    * @param limit
-   * @returns {Promise<{thumbnail: *, created: *, name: *, modified: *, type: string, isDirectory: boolean, url: *}[]>}
+   * @returns {Promise<{thumbnail: *, created: *, name: *, modified: *, type: string, url: *}[]>}
    */
   async search(object, keyword, offset, limit) {
     const page = Math.floor(offset / limit) + 1;
@@ -99,13 +99,12 @@ class Unsplash extends Deup {
    * Format image information
    *
    * @param image
-   * @returns {{thumbnail: *, created: *, name, modified: *, type: string, isDirectory: boolean, url}}
+   * @returns {{thumbnail: *, created: *, name, modified: *, type: string, url}}
    */
   formatObject(image) {
     return {
       id: image.id,
       type: 'image',
-      isDirectory: false,
       thumbnail: image.urls.thumb,
       created: image.created_at,
       modified: image.updated_at,
