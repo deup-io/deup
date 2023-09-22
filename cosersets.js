@@ -52,7 +52,9 @@ class Cosersets extends Deup {
         id: `${path}${file.name}`,
         name: file.name,
         type: file.type.toLowerCase(),
-        modified: new Date(file.time).toISOString(),
+        modified: new Date(
+          Date.parse(file.time.replace(' ', 'T')),
+        ).toISOString(),
         thumbnail: isFolder(file.type) ? '' : file.url,
         url: file.url,
         extra: { path: `${path}${file.name}/` },
