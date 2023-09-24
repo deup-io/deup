@@ -24,7 +24,7 @@ class MoviesTv extends Deup {
    * @type {string}
    * @private
    */
-  _baseUrl = 'https://www.hongniuzy2.com/api.php/provide/vod/from/hnm3u8';
+  _baseUrl = 'https://api.guangsuapi.com/api.php/provide/vod/from/gsm3u8';
 
   /**
    * Check inputs
