@@ -183,7 +183,7 @@ class MoviesTv extends Deup {
         id: `${video.vod_id}#1`,
         name: video.vod_name,
         type: 'video',
-        remark: video.vod_remarks,
+        remark: video.vod_name,
         thumbnail: video.vod_pic,
         poster: video.vod_pic,
         modified: new Date(
