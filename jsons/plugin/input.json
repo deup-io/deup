@@ -1,0 +1,8 @@
+{
+  "@meta": {
+    "className": "PluginInputModel"
+  },
+  "@JsonKey(name: 'label') String?": "label",
+  "@JsonKey(name: 'required') bool?": "required",
+  "@JsonKey(name: 'placeholder') String?": "placeholder"
+}

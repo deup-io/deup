@@ -1,0 +1,8 @@
+name: flutter_subtitle_wrapper
+
+packages:
+  - example/**
+  - "*"
+
+
+# scripts:

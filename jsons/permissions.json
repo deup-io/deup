@@ -1,0 +1,10 @@
+{
+  "@meta": {
+    "className": "PermissionsModel"
+  },
+  "@JsonKey(name: 'write') bool?": "write",
+  "@JsonKey(name: 'rename') bool?": "rename",
+  "@JsonKey(name: 'move') bool?": "move",
+  "@JsonKey(name: 'copy') bool?": "copy",
+  "@JsonKey(name: 'delete') bool?": "delete"
+}

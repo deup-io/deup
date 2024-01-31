@@ -1,0 +1,128 @@
+name: deup
+description: Deup project.
+publish_to: none
+version: 1.0.1+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=1.12.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+
+  flutter_js:
+    path: packages/flutter_js
+
+  fijkplayer:
+    path: packages/fijkplayer
+
+  subtitle_wrapper_package:
+    path: packages/subtitle_wrapper_package
+
+  get: ^4.6.5
+  get_storage: ^2.0.3
+  dio: ^5.0.1
+  uuid: ^3.0.7
+  path: ^1.8.2
+  floor: ^1.4.2
+  jiffy: ^6.1.0
+  logger: ^2.0.1
+  keframe: ^3.0.0
+  charset: ^2.0.1
+  hexcolor: ^3.0.1
+  uni_links: ^0.5.1
+  audio_wave: ^0.1.5
+  share_plus: ^7.1.0
+  photo_view: ^0.14.0
+  file_picker: ^5.2.10
+  url_launcher: ^6.1.11
+  image_picker: ^0.8.7+4
+  easy_refresh: ^3.3.1+2
+  toggle_switch: ^2.1.0
+  vivysub_utils: ^0.2.0
+  path_provider: ^2.0.15
+  in_app_review: ^2.0.6
+  wakelock_plus: ^1.1.1
+  audio_service: ^0.18.10
+  code_text_field: ^1.1.0
+  webview_flutter: ^4.4.2
+  adaptive_dialog: ^1.9.0-0
+  in_app_purchase: 3.1.5
+  dismissible_page: ^1.0.2
+  pull_down_button: ^0.9.1
+  device_info_plus: ^9.0.3
+  flex_color_scheme: ^7.3.1
+  package_info_plus: ^4.1.0
+  permission_handler: ^10.2.0
+  modal_bottom_sheet: ^3.0.0-pre
+  image_gallery_saver: ^2.0.3
+  font_awesome_flutter: ^10.4.0
+  cached_network_image: ^3.3.0
+  infinite_scroll_pagination: ^4.0.0
+  syncfusion_flutter_pdfviewer: ^22.2.7
+  flutter_svg: ^2.0.5
+  flutter_phoenix: ^1.1.0
+  flutter_slidable: ^3.0.0
+  flutter_screenutil: ^5.8.3
+  flutter_downloader: ^1.10.2
+  flutter_smart_dialog: ^4.7.1
+  flutter_inappwebview: ^6.0.0-beta.31
+  flutter_cache_manager: ^3.3.1
+  flutter_native_splash: ^2.2.19
+  flutter_staggered_grid_view: ^0.7.0
+  flutter_floating_bottom_bar: ^1.1.0
+  flutter_keyboard_visibility: ^5.4.0
+
+dependency_overrides:
+  watcher: ^1.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_gen: ^5.2.0
+  flutter_lints: ^2.0.0
+  floor_generator: ^1.4.2
+  flutter_launcher_icons: ^0.13.1
+  change_app_package_name: ^1.1.0
+  build_runner: ^2.4.7
+  json_model: ^1.0.0
+  json_serializable: ^6.5.4
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  color_dark: "#121212"
+  branding: assets/common/logo-transparent.png
+  branding_dark: assets/common/logo-dark-transparent.png
+  android_12:
+    color: "#FFFFFF"
+    color_dark: "#121212"
+    icon_background_color: "#FFFFFF"
+    icon_background_color_dark: "#121212"
+    image: assets/common/android/logo.png
+    image_dark: assets/common/android/logo-dark.png
+
+flutter_app_name:
+  name: "Deup"
+
+flutter_gen:
+  output: lib/gen/
+  line_length: 80
+
+flutter_icons:
+  web:
+    generate: true
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/common/logo.jpg"
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/js/
+    - assets/common/
+    - assets/images/
+    - assets/lottie/

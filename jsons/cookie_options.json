@@ -1,0 +1,12 @@
+{
+  "@meta": {
+    "className": "CookieOptionsModel"
+  },
+  "@JsonKey(name: 'path') String?": "path",
+  "@JsonKey(name: 'domain') String?": "domain",
+  "@JsonKey(name: 'expiresDate') int?": "expiresDate",
+  "@JsonKey(name: 'maxAge') int?": "maxAge",
+  "@JsonKey(name: 'isSecure') bool?": "isSecure",
+  "@JsonKey(name: 'isHttpOnly') bool?": "isHttpOnly",
+  "@JsonKey(name: 'sameSite') String?": "sameSite"
+}

@@ -1,0 +1,9 @@
+{
+  "@meta": {
+    "className": "OptionsModel"
+  },
+  "@JsonKey(name: 'icon') bool?": "icon",
+  "@JsonKey(name: 'hideNavBar') bool?": "hideNavBar",
+  "@JsonKey(name: 'layout') String?": "layout",
+  "@JsonKey(name: 'pageSize') int?": "pageSize"
+}
