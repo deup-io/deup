@@ -1,10 +1,3 @@
-import Deup from '../src';
-
-const $alert = Deup.__NATIVE__.alert;
-const $axios = Deup.__NATIVE__.axios;
-const $storage = Deup.__NATIVE__.storage;
-const $cheerio = Deup.__NATIVE__.cheerio;
-
 /**
  * MoviesTv plugin for Deup
  *
